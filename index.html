@@ -1,39 +1,48 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>朗読プロンプター</title>
+<header id="header">
 
-  <link rel="stylesheet" href="style.css">
-</head>
+  <div id="logoArea">
+    <img src="トータルロゴ.png" id="logo">
+    <span id="title">朗読プロンプター</span>
+  </div>
 
-<body>
+  <div id="timer">
+    00:00
+  </div>
 
-  <!-- ヘッダー -->
-  <header id="header">
-    <div id="title">朗読プロンプター</div>
+</header>
 
-    <div id="timer">
-      00:00
-    </div>
-  </header>
+body{
+    margin:0;
+    font-family:sans-serif;
+}
 
-  <!-- プロンプター画面 -->
-  <main id="viewer">
+#header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    <div id="pages">
+    padding:10px 20px;
 
-      <!-- ここに画像を並べる -->
+    background:#1f2937;
+    color:white;
+}
 
-    </div>
+#logoArea{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
 
-    <!-- ガイドライン -->
-    <div id="guideLine"></div>
+#logo{
+    height:42px;
+}
 
-  </main>
+#title{
+    font-size:24px;
+    font-weight:bold;
+}
 
-  <script src="app.js"></script>
-
-</body>
-</html>
+#timer{
+    font-size:24px;
+    font-weight:bold;
+}
