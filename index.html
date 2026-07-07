@@ -9,6 +9,7 @@
 body{
     margin:0;
     font-family:sans-serif;
+    overflow:hidden;
 }
 
 #header{
@@ -39,6 +40,14 @@ body{
     font-size:24px;
     font-weight:bold;
 }
+
+#viewer{
+    position:relative;
+    height:calc(100vh - 70px);
+    overflow:hidden;
+    background:white;
+}
+
 </style>
 
 </head>
@@ -55,6 +64,16 @@ body{
     <div id="timer">00:00</div>
 
 </header>
+
+<main id="viewer">
+
+    <div id="pages">
+
+    </div>
+
+    <div id="guideLine"></div>
+
+</main>
 
 </body>
 </html>
