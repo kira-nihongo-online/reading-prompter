@@ -85,6 +85,19 @@ body{
     pointer-events:none;
 }
 
+#controlArea{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+#controlArea button{
+    width:36px;
+    height:36px;
+    font-size:18px;
+    cursor:pointer;
+}
+
 </style>
 
 </head>
@@ -98,7 +111,11 @@ body{
         <span id="title">朗読プロンプター</span>
     </div>
 
-    <div id="timer">00:00</div>
+    <div id="controlArea">
+        <button id="playBtn">▶</button>
+        <button id="pauseBtn">⏸</button>
+        <div id="timer">00:00</div>
+    </div>
 
 </header>
 
@@ -127,6 +144,29 @@ document.addEventListener("wheel",(e)=>{
     pages.style.transform = `translateY(${y}px)`;
 
 },{passive:false});
+
+let speed = 1;
+let autoScroll = null;
+
+document.getElementById("playBtn").onclick = () => {
+
+    if(autoScroll) return;
+
+    autoScroll = setInterval(() => {
+
+        y -= speed;
+        pages.style.transform = `translateY(${y}px)`;
+
+    },16);
+
+};
+
+document.getElementById("pauseBtn").onclick = () => {
+
+    clearInterval(autoScroll);
+    autoScroll = null;
+
+};
 
 </script>
 
