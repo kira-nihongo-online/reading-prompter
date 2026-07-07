@@ -112,11 +112,24 @@ body{
     </div>
 
     <div id="controlArea">
-        <button id="playBtn">▶</button>
-        <button id="pauseBtn">⏸</button>
-        <div id="timer">00:00</div>
-    </div>
 
+        <button id="playBtn">▶</button>
+
+        <button id="pauseBtn">⏸</button>
+
+        <button id="resetBtn">⏮</button>
+
+        <button id="speedDownBtn">－</button>
+
+        <span id="speedText">1.0</span>
+
+        <button id="speedUpBtn">＋</button>
+
+        <button id="modeBtn">📚</button>
+
+        <div id="timer">00:00</div>
+
+    </div>
 </header>
 
 <main id="viewer">
@@ -167,6 +180,83 @@ document.getElementById("pauseBtn").onclick = () => {
     autoScroll = null;
 
 };
+
+// 初期速度
+let speed = 1.0;
+
+// 表示更新
+function updateSpeed(){
+
+    document.getElementById("speedText").textContent = speed.toFixed(1);
+
+}
+
+// ＋
+document.getElementById("speedUpBtn").onclick=()=>{
+
+    speed +=0.2;
+
+    updateSpeed();
+
+};
+
+// －
+document.getElementById("speedDownBtn").onclick=()=>{
+
+    if(speed>0.2){
+
+        speed -=0.2;
+
+        updateSpeed();
+
+    }
+
+};
+
+// リセット
+document.getElementById("resetBtn").onclick=()=>{
+
+    clearInterval(autoScroll);
+
+    autoScroll=null;
+
+    y=0;
+
+    pages.style.transform=`translateY(${y}px)`;
+
+};
+
+let mode = "lesson";
+
+const modeBtn = document.getElementById("modeBtn");
+
+modeBtn.onclick = ()=>{
+
+    if(mode==="lesson"){
+
+        mode="contest";
+
+        modeBtn.textContent="🏆";
+
+        document.getElementById("speedDownBtn").style.display="none";
+        document.getElementById("speedUpBtn").style.display="none";
+        document.getElementById("speedText").style.display="none";
+
+    }else{
+
+        mode="lesson";
+
+        modeBtn.textContent="📚";
+
+        document.getElementById("speedDownBtn").style.display="";
+        document.getElementById("speedUpBtn").style.display="";
+        document.getElementById("speedText").style.display="";
+
+    }
+
+};
+
+updateSpeed();
 
 </script>
 
