@@ -25,7 +25,6 @@ body{
 
 #header{
     display:flex;
-    justify-content:space-between;
     align-items:center;
     padding:10px 20px;
     background:#1f2937;
@@ -36,6 +35,19 @@ body{
     display:flex;
     align-items:center;
     gap:12px;
+}
+
+#modeArea{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+#modeBtn{
+    width:auto;
+    height:36px;
+    padding:0 12px;
+    white-space:nowrap;
 }
 
 #logo{
@@ -102,6 +114,7 @@ body{
     display:flex;
     align-items:center;
     gap:10px;
+    justify-content:flex-end;
 }
 
 #controlArea button{
@@ -129,11 +142,18 @@ body{
 
 <header id="header">
 
+    <!-- 左 -->
     <div id="logoArea">
         <img src="トータルロゴ.png" id="logo">
         <span id="title">朗読プロンプター</span>
     </div>
 
+    <!-- 中央 -->
+    <div id="modeArea">
+        <button id="modeBtn">授業モード</button>
+    </div>
+
+    <!-- 右 -->
     <div id="controlArea">
 
         <button id="playBtn">▶</button>
@@ -148,8 +168,6 @@ body{
 
         <button id="speedUpBtn">＋</button>
 
-        <button id="modeBtn">授業モード</button>
-
         <div id="timer">
             <span>⏱</span>
             <span id="timerText">00:00</span>
@@ -158,7 +176,6 @@ body{
     </div>
 
 </header>
-
 
 <!--==================================================
     ビューア
