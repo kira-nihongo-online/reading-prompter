@@ -335,6 +335,8 @@ modeBtn.onclick=()=>{
 
         modeBtn.textContent = "コンテストモード";
 
+        timerInput.readOnly = false;
+
         document.getElementById("speedDownBtn").style.display="none";
         document.getElementById("speedUpBtn").style.display="none";
         document.getElementById("speedText").style.display="none";
@@ -344,6 +346,8 @@ modeBtn.onclick=()=>{
         mode="lesson";
 
         modeBtn.textContent = "授業モード";
+
+        timerInput.readOnly = true;
 
         document.getElementById("speedDownBtn").style.display="";
         document.getElementById("speedUpBtn").style.display="";
