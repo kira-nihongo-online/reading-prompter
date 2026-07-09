@@ -64,6 +64,16 @@ body{
     font-weight:bold;
 }
 
+#timerInput{
+    width:60px;
+    border:none;
+    background:transparent;
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+    text-align:center;
+    outline:none;
+}
 
 /*==================================================
   ビューア
@@ -170,7 +180,14 @@ body{
 
         <div id="timer">
             <span>⏱</span>
-            <span id="timerText">00:00</span>
+
+            <input
+                id="timerInput"
+                type="text"
+                value="00:00"
+                maxlength="5"
+                readonly
+            >
         </div>
 
     </div>
