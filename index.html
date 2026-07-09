@@ -64,6 +64,26 @@ body{
     font-weight:bold;
 }
 
+#timerInput{
+
+    width:60px;
+
+    border:none;
+
+    background:transparent;
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    text-align:center;
+
+    outline:none;
+
+}
+
 
 /*==================================================
   ビューア
@@ -170,7 +190,14 @@ body{
 
         <div id="timer">
             <span>⏱</span>
-            <span id="timerText">00:00</span>
+
+            <input
+                id="timerInput"
+                type="text"
+                value="00:00"
+                maxlength="5"
+                readonly
+            >
         </div>
 
     </div>
@@ -215,7 +242,7 @@ let mode = "lesson";
 
 const pages = document.getElementById("pages");
 const modeBtn = document.getElementById("modeBtn");
-
+const timerInput = document.getElementById("timerInput");
 
 //==================================================
 // 手動スクロール
@@ -319,6 +346,8 @@ modeBtn.onclick=()=>{
 
         modeBtn.textContent = "コンテストモード";
 
+        timerInput.readOnly = false;
+
         document.getElementById("speedDownBtn").style.display="none";
         document.getElementById("speedUpBtn").style.display="none";
         document.getElementById("speedText").style.display="none";
@@ -329,6 +358,8 @@ modeBtn.onclick=()=>{
 
         modeBtn.textContent = "授業モード";
 
+        timerInput.readOnly = true;
+
         document.getElementById("speedDownBtn").style.display="";
         document.getElementById("speedUpBtn").style.display="";
         document.getElementById("speedText").style.display="";
@@ -337,6 +368,25 @@ modeBtn.onclick=()=>{
 
 };
 
+//==================================================
+// タイマー入力
+//==================================================
+
+timerInput.addEventListener("blur",()=>{
+
+    const value = timerInput.value;
+
+    const pattern = /^\d{2}:\d{2}$/;
+
+    if(!pattern.test(value)){
+
+        alert("MM:SS形式で入力してください。");
+
+        timerInput.value = "00:00";
+
+    }
+
+});
 
 //==================================================
 // 初期化
