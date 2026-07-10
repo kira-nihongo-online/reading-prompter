@@ -408,8 +408,19 @@ document.getElementById("resetBtn").onclick = ()=>{
     y = 0;
     pages.style.transform = `translateY(${y}px)`;
 
-};
+    // タイマー表示を初期状態へ戻す
+    if(mode==="contest"){
 
+        remainingTime = contestTime;
+        updateTimerDisplay();
+
+    }else{
+
+        timerInput.value = "00:00";
+
+    }
+
+};
 
 //==================================================
 // モード切替
