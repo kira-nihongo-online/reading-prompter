@@ -294,8 +294,10 @@ document.getElementById("playBtn").onclick = ()=>{
 document.getElementById("pauseBtn").onclick = ()=>{
 
     clearInterval(autoScroll);
-
     autoScroll = null;
+
+    clearInterval(timerInterval);
+    timerInterval = null;
 
 };
 
