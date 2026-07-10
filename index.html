@@ -107,6 +107,9 @@ body{
     position:absolute;
 
     top:65%;
+
+    cursor:ns-resize;
+
     left:0;
 
     width:100%;
@@ -255,6 +258,8 @@ const page1 = document.getElementById("page1");
 
 const soundBtn = document.getElementById("soundBtn");
 
+const guideLine = document.getElementById("guideLine");
+
 async function loadImages() {
 
     pages.innerHTML = "";
@@ -286,6 +291,39 @@ async function loadImages() {
     lessonAudio.currentTime = 0;
 
 }
+
+//==================================================
+// ガイドライン移動
+//==================================================
+
+let draggingGuide = false;
+
+guideLine.addEventListener("mousedown", () => {
+
+    draggingGuide = true;
+
+});
+
+document.addEventListener("mouseup", () => {
+
+    draggingGuide = false;
+
+});
+
+document.addEventListener("mousemove", (e) => {
+
+    if (!draggingGuide) return;
+
+    const rect = viewer.getBoundingClientRect();
+
+    let y = e.clientY - rect.top;
+
+    if (y < 0) y = 0;
+    if (y > rect.height) y = rect.height;
+
+    guideLine.style.top = y + "px";
+
+});
 
 //==================================================
 // 手動スクロール
