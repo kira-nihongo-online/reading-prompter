@@ -237,7 +237,10 @@ let soundEnabled = false;
 
 let lessonAudio = new Audio("audio/001.mp3");
 
-let currentLesson = "lesson01";
+// URLから lesson を取得
+const params = new URLSearchParams(window.location.search);
+
+let currentLesson = params.get("lesson") || "lesson01";
 
 //==================================================
 // 要素取得
@@ -574,9 +577,13 @@ function updateTimerDisplay(){
 // 初期化
 //==================================================
 
-loadImages();
+(async () => {
 
-updateSpeed();
+    await loadImages();
+
+    updateSpeed();
+
+})();
 
 </script>
 
