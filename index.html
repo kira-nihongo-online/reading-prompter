@@ -306,7 +306,7 @@ document.getElementById("playBtn").onclick = ()=>{
 
     // スクロール距離
     const totalScroll =
-        page1.offsetHeight - viewer.clientHeight;
+        pages.scrollHeight - viewer.clientHeight;
 
     // 自動速度計算
     autoSpeed = totalScroll / contestTime / 60;
