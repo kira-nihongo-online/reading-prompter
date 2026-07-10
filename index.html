@@ -235,8 +235,6 @@ let remainingTime = 0;
 
 let soundEnabled = false;
 
-let lessonAudio = new Audio("audio/001.mp3");
-
 //==================================================
 // 要素取得
 //==================================================
@@ -274,6 +272,8 @@ document.getElementById("playBtn").onclick = ()=>{
     if(autoScroll) return;
 
     const pageName = page1.src.split("/").pop().split(".")[0];
+
+    let lessonAudio = new Audio("audio/" + pageName + ".mp3");
 
     console.log(pageName);
 
