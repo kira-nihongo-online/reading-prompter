@@ -172,6 +172,8 @@ body{
 
         <button id="resetBtn">⏮</button>
 
+        
+
         <button id="speedDownBtn">－</button>
 
         <span id="speedText">1.0</span>
@@ -231,6 +233,8 @@ let autoSpeed = 0;
 let timerInterval = null;
 let remainingTime = 0;
 
+let soundEnabled = false;
+
 //==================================================
 // 要素取得
 //==================================================
@@ -241,6 +245,8 @@ const timerInput = document.getElementById("timerInput");
 
 const viewer = document.getElementById("viewer");
 const page1 = document.getElementById("page1");
+
+const soundBtn = document.getElementById("soundBtn");
 
 //==================================================
 // 手動スクロール
@@ -410,6 +416,26 @@ document.getElementById("resetBtn").onclick = ()=>{
     }else{
 
         timerInput.value = "00:00";
+
+    }
+
+};
+
+//==================================================
+// 音声ON/OFF
+//==================================================
+
+soundBtn.onclick = ()=>{
+
+    soundEnabled = !soundEnabled;
+
+    if(soundEnabled){
+
+        soundBtn.textContent = "🔊 音声 ON";
+
+    }else{
+
+        soundBtn.textContent = "🔇 音声 OFF";
 
     }
 
