@@ -361,8 +361,15 @@ document.getElementById("pauseBtn").onclick = ()=>{
 
     clearInterval(timerInterval);
     timerInterval = null;
+　
+    if(mode==="lesson" && soundEnabled){
+
+        lessonAudio.pause();
+
+    }
 
 };
+
 //==================================================
 // 速度変更
 //==================================================
