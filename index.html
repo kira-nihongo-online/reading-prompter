@@ -263,7 +263,11 @@ document.getElementById("playBtn").onclick = ()=>{
 
     if(mode==="contest"){
 
-        remainingTime = contestTime;
+        if(remainingTime===0){
+
+            remainingTime = contestTime;
+
+        }
 
         console.log(remainingTime);
 
