@@ -282,6 +282,10 @@ document.getElementById("playBtn").onclick = ()=>{
 
     console.log(totalScroll);
 
+    autoSpeed = totalScroll / contestTime / 60;
+
+    console.log(autoSpeed);
+
     if(mode==="contest"){
 
         timerInterval = setInterval(()=>{
