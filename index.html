@@ -172,7 +172,7 @@ body{
 
         <button id="resetBtn">⏮</button>
 
-        <button id="soundBtn">🔇 音声 OFF</button>
+        <button id="soundBtn" title="音声 OFF">🔇</button>
 
         <button id="speedDownBtn">－</button>
 
@@ -431,11 +431,13 @@ soundBtn.onclick = ()=>{
 
     if(soundEnabled){
 
-        soundBtn.textContent = "🔊 音声 ON";
+        soundBtn.textContent = "🔊";
+        soundBtn.title = "音声 ON";
 
     }else{
 
-        soundBtn.textContent = "🔇 音声 OFF";
+        soundBtn.textContent = "🔇";
+        soundBtn.title = "音声 OFF";
 
     }
 
