@@ -245,6 +245,8 @@ const lessonNo = params.get("lesson") || "1";
 
 let currentLesson = `lesson${lessonNo.padStart(2, "0")}`;
 
+let lessonAudio = new Audio(`mina/${currentLesson}/${currentLesson}.mp3`);
+
 //==================================================
 // 要素取得
 //==================================================
