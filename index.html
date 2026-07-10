@@ -252,6 +252,34 @@ const page1 = document.getElementById("page1");
 
 const soundBtn = document.getElementById("soundBtn");
 
+async function loadImages() {
+
+    pages.innerHTML = "";
+
+    for (let i = 1; i <= 10; i++) {
+
+        const no = String(i).padStart(3, "0");
+        const src = `${currentLesson}/${no}.jpg`;
+
+        const img = new Image();
+
+        const loaded = await new Promise(resolve => {
+
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+
+            img.src = src;
+
+        });
+
+        if (!loaded) break;
+
+        pages.appendChild(img);
+
+    }
+
+}
+
 //==================================================
 // 手動スクロール
 //==================================================
