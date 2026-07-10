@@ -242,6 +242,8 @@ const params = new URLSearchParams(window.location.search);
 
 let currentLesson = params.get("lesson") || "lesson01";
 
+let lessonAudio = new Audio(`mina/${currentLesson}/${currentLesson}.mp3`);
+
 //==================================================
 // 要素取得
 //==================================================
