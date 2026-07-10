@@ -266,47 +266,38 @@ document.getElementById("playBtn").onclick = ()=>{
 
     if(autoScroll) return;
 
+    // コンテストモード
     if(mode==="contest"){
 
-            if(contestTime===0){
+        // 時間未入力
+        if(contestTime===0){
 
-                alert("コンテスト時間を入力してください。");
-                return;
-
-            }
-
-            if(remainingTime===0){
-
-                remainingTime = contestTime;
-
-            }
-
-            console.log(remainingTime);
+            alert("コンテスト時間を入力してください。");
+            return;
 
         }
 
-        const totalScroll =
-            page1.offsetHeight - viewer.clientHeight;
-
+        // 初回のみ時間セット
         if(remainingTime===0){
 
             remainingTime = contestTime;
 
         }
 
-        console.log(remainingTime);
-
     }
 
+    // スクロール距離
     const totalScroll =
         page1.offsetHeight - viewer.clientHeight;
 
     console.log(totalScroll);
 
+    // 自動速度計算
     autoSpeed = totalScroll / contestTime / 60;
 
     console.log(autoSpeed);
 
+    // コンテストタイマー開始
     if(mode==="contest"){
 
         timerInterval = setInterval(()=>{
@@ -333,14 +324,19 @@ document.getElementById("playBtn").onclick = ()=>{
 
         },1000);
 
-     }
+    }
 
+    // 自動スクロール開始
     autoScroll = setInterval(()=>{
 
-        if (mode === "contest") {
+        if(mode==="contest"){
+
             y -= autoSpeed;
-        } else {
+
+        }else{
+
             y -= speed;
+
         }
 
         pages.style.transform = `translateY(${y}px)`;
@@ -349,6 +345,8 @@ document.getElementById("playBtn").onclick = ()=>{
 
 };
 
+
+// 一時停止
 document.getElementById("pauseBtn").onclick = ()=>{
 
     clearInterval(autoScroll);
@@ -358,8 +356,6 @@ document.getElementById("pauseBtn").onclick = ()=>{
     timerInterval = null;
 
 };
-
-
 //==================================================
 // 速度変更
 //==================================================
