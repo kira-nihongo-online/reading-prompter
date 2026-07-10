@@ -391,14 +391,21 @@ document.getElementById("speedDownBtn").onclick=()=>{
 // リセット
 //==================================================
 
-document.getElementById("resetBtn").onclick=()=>{
+document.getElementById("resetBtn").onclick = ()=>{
 
+    // スクロール停止
     clearInterval(autoScroll);
-
     autoScroll = null;
 
-    y = 0;
+    // タイマー停止
+    clearInterval(timerInterval);
+    timerInterval = null;
 
+    // 残り時間を初期化
+    remainingTime = 0;
+
+    // スクロール位置を先頭へ
+    y = 0;
     pages.style.transform = `translateY(${y}px)`;
 
 };
