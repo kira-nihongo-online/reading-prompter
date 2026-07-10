@@ -225,6 +225,10 @@ let speed = 1.0;
 let autoScroll = null;
 let mode = "lesson";
 
+let contestTime = 0;
+
+console.log(contestTime);
+
 //==================================================
 // 要素取得
 //==================================================
@@ -372,6 +376,12 @@ timerInput.addEventListener("change",()=>{
         timerInput.value = "00:00";
 
     }
+
+    const parts = timerInput.value.split(":");
+
+    contestTime =
+        Number(parts[0]) * 60 +
+        Number(parts[1]);
 
 });
 
