@@ -227,6 +227,9 @@ let mode = "lesson";
 
 let contestTime = 0;
 
+let timerInterval = null;
+let remainingTime = 0;
+
 //==================================================
 // 要素取得
 //==================================================
@@ -381,7 +384,6 @@ timerInput.addEventListener("change",()=>{
         Number(parts[0]) * 60 +
         Number(parts[1]);
 
-    console.log(contestTime);
 
 });
 
