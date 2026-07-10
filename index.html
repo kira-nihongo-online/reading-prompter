@@ -237,6 +237,7 @@ let remainingTime = 0;
 const pages = document.getElementById("pages");
 const modeBtn = document.getElementById("modeBtn");
 const timerInput = document.getElementById("timerInput");
+const timerText = document.getElementById("timerInput");
 
 //==================================================
 // 手動スクロール
@@ -412,6 +413,22 @@ timerInput.addEventListener("change",()=>{
 
 
 });
+
+//==================================================
+// タイマー表示更新
+//==================================================
+
+function updateTimerDisplay(){
+
+    const min = Math.floor(remainingTime / 60);
+    const sec = remainingTime % 60;
+
+    timerText.value =
+        String(min).padStart(2,"0")
+        + ":"
+        + String(sec).padStart(2,"0");
+
+}
 
 //==================================================
 // 初期化
