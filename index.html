@@ -269,6 +269,18 @@ document.getElementById("playBtn").onclick = ()=>{
 
     }
 
+    if(mode==="contest"){
+
+        timerInterval = setInterval(()=>{
+
+            remainingTime--;
+
+            console.log(remainingTime);
+
+        },1000);
+
+    }
+
     autoScroll = setInterval(()=>{
 
         y -= speed;
