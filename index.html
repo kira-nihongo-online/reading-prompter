@@ -422,6 +422,13 @@ document.getElementById("resetBtn").onclick = ()=>{
     y = 0;
     pages.style.transform = `translateY(${y}px)`;
 
+    if(mode==="lesson"){
+
+        lessonAudio.pause();
+        lessonAudio.currentTime = 0;
+
+    }
+
     // タイマー表示を初期状態へ戻す
     if(mode==="contest"){
 
