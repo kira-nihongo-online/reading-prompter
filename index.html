@@ -273,6 +273,10 @@ document.getElementById("playBtn").onclick = ()=>{
 
     if(autoScroll) return;
 
+    const pageName = page1.src.split("/").pop().split(".")[0];
+
+    console.log(pageName);
+
     if(mode==="lesson" && soundEnabled){
 
         lessonAudio.play();
