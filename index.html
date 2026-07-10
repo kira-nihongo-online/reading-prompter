@@ -284,9 +284,21 @@ document.getElementById("playBtn").onclick = ()=>{
 
             updateTimerDisplay();
 
-        },1000);
+            if(remainingTime <= 0){
 
-    }
+                remainingTime = 0;
+
+                updateTimerDisplay();
+
+                clearInterval(timerInterval);
+                timerInterval = null;
+
+                clearInterval(autoScroll);
+                autoScroll = null;
+
+            }
+
+        },1000);
 
     autoScroll = setInterval(()=>{
 
