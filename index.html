@@ -290,12 +290,8 @@ document.getElementById("playBtn").onclick = ()=>{
     const totalScroll =
         page1.offsetHeight - viewer.clientHeight;
 
-    console.log(totalScroll);
-
     // 自動速度計算
     autoSpeed = totalScroll / contestTime / 60;
-
-    console.log(autoSpeed);
 
     // コンテストタイマー開始
     if(mode==="contest"){
@@ -303,8 +299,6 @@ document.getElementById("playBtn").onclick = ()=>{
         timerInterval = setInterval(()=>{
 
             remainingTime--;
-
-            console.log(remainingTime);
 
             updateTimerDisplay();
 
