@@ -316,7 +316,11 @@ document.getElementById("playBtn").onclick = ()=>{
 
     autoScroll = setInterval(()=>{
 
-        y -= speed;
+        if (mode === "contest") {
+            y -= autoSpeed;
+        } else {
+            y -= speed;
+        }
 
         pages.style.transform = `translateY(${y}px)`;
 
