@@ -238,9 +238,9 @@ let soundEnabled = false;
 // URLから lesson を取得
 const params = new URLSearchParams(window.location.search);
 
-let currentLesson = params.get("lesson") || "lesson01";
+const lessonNo = params.get("lesson") || "1";
 
-let lessonAudio = new Audio(`mina/${currentLesson}/${currentLesson}.mp3`);
+let currentLesson = `lesson${lessonNo.padStart(2, "0")}`;
 
 //==================================================
 // 要素取得
