@@ -235,6 +235,8 @@ let remainingTime = 0;
 
 let soundEnabled = false;
 
+let lessonAudio = new Audio("audio/001.mp3");
+
 //==================================================
 // 要素取得
 //==================================================
@@ -270,6 +272,12 @@ document.addEventListener("wheel",(e)=>{
 document.getElementById("playBtn").onclick = ()=>{
 
     if(autoScroll) return;
+
+    if(soundEnabled){
+
+        lessonAudio.play();
+
+    }
 
     // コンテストモード
     if(mode==="contest"){
