@@ -277,6 +277,11 @@ document.getElementById("playBtn").onclick = ()=>{
 
     }
 
+    const totalScroll =
+        page1.offsetHeight - viewer.clientHeight;
+
+    console.log(totalScroll);
+
     if(mode==="contest"){
 
         timerInterval = setInterval(()=>{
