@@ -475,16 +475,31 @@ document.getElementById("playBtn").onclick = ()=>{
 
     if(autoScroll) return;
 
-    if(mode==="lesson" && soundEnabled){
+    //==============================
+    // 音声再生
+    //==============================
 
-        lessonAudio.play();
+    if(soundEnabled){
+
+        if(mode === "lesson"){
+
+            lessonAudio.play();
+
+        }else{
+
+            // 仮テスト
+            Voice.speakJP("テストです。");
+
+        }
 
     }
 
+    //==============================
     // コンテストモード
+    //==============================
+
     if(mode==="contest"){
 
-        // 時間未入力
         if(contestTime===0){
 
             alert("コンテスト時間を入力してください。");
@@ -492,7 +507,6 @@ document.getElementById("playBtn").onclick = ()=>{
 
         }
 
-        // 初回のみ時間セット
         if(remainingTime===0){
 
             remainingTime = contestTime;
@@ -551,24 +565,6 @@ document.getElementById("playBtn").onclick = ()=>{
         pages.style.transform = `translateY(${y}px)`;
 
     },16);
-
-};
-
-
-// 一時停止
-document.getElementById("pauseBtn").onclick = ()=>{
-
-    clearInterval(autoScroll);
-    autoScroll = null;
-
-    clearInterval(timerInterval);
-    timerInterval = null;
-　
-    if(mode==="lesson" && soundEnabled){
-
-        lessonAudio.pause();
-
-    }
 
 };
 
