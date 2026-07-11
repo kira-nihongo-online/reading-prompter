@@ -671,31 +671,45 @@ soundBtn.onclick = ()=>{
 // モード切替
 //==================================================
 
-modeBtn.onclick=()=>{
+modeBtn.onclick = async () => {
 
-    if(mode==="lesson"){
+    if(mode === "lesson"){
 
-        mode="contest";
+        mode = "contest";
 
         modeBtn.textContent = "コンテストモード";
 
         timerInput.readOnly = false;
 
-        document.getElementById("speedDownBtn").style.display="none";
-        document.getElementById("speedUpBtn").style.display="none";
-        document.getElementById("speedText").style.display="none";
+        document.getElementById("speedDownBtn").style.display = "none";
+        document.getElementById("speedUpBtn").style.display = "none";
+        document.getElementById("speedText").style.display = "none";
+
+        // 画像切替
+        await loadImages();
+
+        // 先頭へ戻る
+        y = 0;
+        pages.style.transform = `translateY(${y}px)`;
 
     }else{
 
-        mode="lesson";
+        mode = "lesson";
 
         modeBtn.textContent = "授業モード";
 
         timerInput.readOnly = true;
 
-        document.getElementById("speedDownBtn").style.display="";
-        document.getElementById("speedUpBtn").style.display="";
-        document.getElementById("speedText").style.display="";
+        document.getElementById("speedDownBtn").style.display = "";
+        document.getElementById("speedUpBtn").style.display = "";
+        document.getElementById("speedText").style.display = "";
+
+        // 画像切替
+        await loadImages();
+
+        // 先頭へ戻る
+        y = 0;
+        pages.style.transform = `translateY(${y}px)`;
 
     }
 
