@@ -525,7 +525,7 @@ if (soundEnabled) {
 
         if (!contestTTSPlayed) {
 
-            getContestTTS("sample").then(text => {
+            getContestTTS(currentLesson).then(text => {
 
                 Voice.speakJP(text);
 
