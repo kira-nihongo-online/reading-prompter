@@ -476,25 +476,6 @@ document.getElementById("playBtn").onclick = ()=>{
     if(autoScroll) return;
 
     //==============================
-    // 音声再生
-    //==============================
-
-    if(soundEnabled){
-
-        if(mode === "lesson"){
-
-            lessonAudio.play();
-
-        }else{
-
-            // 仮テスト
-            Voice.speakJP("テストです。");
-
-        }
-
-    }
-
-    //==============================
     // コンテストモード
     //==============================
 
@@ -510,6 +491,25 @@ document.getElementById("playBtn").onclick = ()=>{
         if(remainingTime===0){
 
             remainingTime = contestTime;
+
+        }
+
+    }
+
+    //==============================
+    // 音声再生
+    //==============================
+
+    if(soundEnabled){
+
+        if(mode === "lesson"){
+
+            lessonAudio.play();
+
+        }else{
+
+            // 仮テスト
+            Voice.speakJP("テストです。");
 
         }
 
