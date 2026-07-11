@@ -471,7 +471,7 @@ document.addEventListener("wheel",(e)=>{
 // 自動スクロール
 //==================================================
 
-document.getElementById("playBtn").onclick = ()=>{
+document.getElementById("playBtn").onclick = async ()=>{
 
     if(autoScroll) return;
 
@@ -508,8 +508,13 @@ document.getElementById("playBtn").onclick = ()=>{
 
         }else{
 
-            // 仮テスト
-            Voice.speakJP("テストです。");
+            const res = await fetch(
+                "https://script.google.com/macros/s/AKfycbw7hnyd3dQW9jiDKpOBpGtJB5qf7erSztbbauHjehsQ14xRMiqziGF5SWT3_USKtEwG1w/exec?lesson=sample"
+            );
+
+            const text = await res.text();
+
+            Voice.speakJP(text);
 
         }
 
