@@ -294,6 +294,70 @@ let currentLesson = `lesson${lessonNo.padStart(2, "0")}`;
 let lessonAudio = new Audio(`mina/${currentLesson}/${currentLesson}.mp3`);
 
 //==================================================
+// TTS
+//==================================================
+
+const Voice = (function(){
+
+    let ready = false;
+    let voiceJP = null;
+
+    function init(){
+
+        const setVoices = () => {
+
+            const voices = speechSynthesis.getVoices();
+
+            voiceJP =
+                voices.find(v => v.name.includes("七海")) ||
+                voices.find(v => v.lang === "ja-JP");
+
+            if(voiceJP){
+                ready = true;
+            }
+
+        };
+
+        setVoices();
+
+        speechSynthesis.onvoiceschanged = setVoices;
+
+    }
+
+    function speakJP(text){
+
+        if(!ready) return;
+        if(!text) return;
+
+        const uttr = new SpeechSynthesisUtterance(text);
+
+        uttr.lang = "ja-JP";
+        uttr.rate = 1;
+        uttr.pitch = 1;
+        uttr.volume = 1;
+
+        uttr.voice = voiceJP;
+
+        speechSynthesis.cancel();
+
+        setTimeout(() => {
+
+            speechSynthesis.speak(uttr);
+
+        },50);
+
+    }
+
+    return{
+
+        init,
+        speakJP
+
+    };
+
+})();
+
+//==================================================
 // 要素取得
 //==================================================
 
@@ -346,7 +410,9 @@ async function loadImages() {
 
 let draggingGuide = false;
 
-guideLine.addEventListener("mousedown", () => {
+const guideHandle = document.getElementById("guideHandle");
+
+guideHandle.addEventListener("mousedown", () => {
 
     draggingGuide = true;
 
@@ -668,6 +734,8 @@ function updateTimerDisplay(){
 //==================================================
 
 (async () => {
+
+
 
     await loadImages();
 
