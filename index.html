@@ -515,20 +515,29 @@ document.getElementById("playBtn").onclick = ()=>{
     // 音声再生
     //==============================
 
-    if(soundEnabled){
+if (soundEnabled) {
 
-        if(mode === "lesson"){
+    if (mode === "lesson") {
 
-            lessonAudio.play();
+        lessonAudio.play();
 
-        }else{
+    } else {
 
-            // 仮テスト
-            Voice.speakJP("テストです。");
+        if (!contestTTSPlayed) {
+
+            getContestTTS("sample").then(text => {
+
+                Voice.speakJP(text);
+
+            });
+
+            contestTTSPlayed = true;
 
         }
 
     }
+
+}
 
     // スクロール距離
     const totalScroll =
