@@ -358,6 +358,20 @@ const Voice = (function(){
 })();
 
 //==================================================
+// コンテストTTS取得
+//==================================================
+
+async function getContestTTS(lesson){
+
+    const res = await fetch(
+        "https://script.google.com/macros/s/AKfycbw7hnyd3dQW9jiDKpOBpGtJB5qf7erSztbbauHjehsQ14xRMiqziGF5SWT3_USKtEwG1w/exec?lesson=" + lesson
+    );
+
+    return await res.text();
+
+}
+
+//==================================================
 // 要素取得
 //==================================================
 
@@ -738,7 +752,7 @@ modeBtn.onclick = async () => {
 
     }
 
-       
+
 
 };
 
