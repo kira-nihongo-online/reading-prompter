@@ -528,6 +528,40 @@ document.addEventListener("wheel",(e)=>{
 
 },{passive:false});
 
+//==================================================
+// スマホ手動スクロール
+//==================================================
+
+let touchStartY = 0;
+
+viewer.addEventListener("touchstart", (e) => {
+
+    // READ LINE を触っているときはスクロールしない
+    if (e.target === guideHandle || guideHandle.contains(e.target)) return;
+
+    touchStartY = e.touches[0].clientY;
+
+}, { passive:false });
+
+viewer.addEventListener("touchmove", (e) => {
+
+    // READ LINE を触っているときはスクロールしない
+    if (e.target === guideHandle || guideHandle.contains(e.target)) return;
+
+    e.preventDefault();
+
+    const currentY = e.touches[0].clientY;
+
+    const delta = currentY - touchStartY;
+
+    y += delta;
+
+    pages.style.transform = `translateY(${y}px)`;
+
+    touchStartY = currentY;
+
+}, { passive:false });
+
 
 //==================================================
 // 自動スクロール
