@@ -435,37 +435,41 @@ async function loadImages() {
 }
 
 //==================================================
-// ガイドライン移動
+// ガイドライン移動（PC・スマホ対応）
 //==================================================
 
 let draggingGuide = false;
 
 const guideHandle = document.getElementById("guideHandle");
 
-guideHandle.addEventListener("mousedown", () => {
+guideHandle.addEventListener("pointerdown", (e) => {
 
     draggingGuide = true;
 
+    guideHandle.setPointerCapture(e.pointerId);
+
+    e.preventDefault();
+
 });
 
-document.addEventListener("mouseup", () => {
+document.addEventListener("pointerup", () => {
 
     draggingGuide = false;
 
 });
 
-document.addEventListener("mousemove", (e) => {
+document.addEventListener("pointermove", (e) => {
 
     if (!draggingGuide) return;
 
     const rect = viewer.getBoundingClientRect();
 
-    let y = e.clientY - rect.top;
+    let posY = e.clientY - rect.top;
 
-    if (y < 0) y = 0;
-    if (y > rect.height) y = rect.height;
+    if (posY < 0) posY = 0;
+    if (posY > rect.height) posY = rect.height;
 
-    guideLine.style.top = y + "px";
+    guideLine.style.top = posY + "px";
 
 });
 
