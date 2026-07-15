@@ -608,6 +608,8 @@ if (soundEnabled) {
 
             getContestTTS(currentContest).then(text => {
 
+                alert(text);
+
                 Voice.speakJP(text);
 
             });
