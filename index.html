@@ -435,43 +435,84 @@ async function loadImages() {
 }
 
 //==================================================
-// ガイドライン移動（PC・スマホ対応）
+// ガイドライン移動（PC・Android・iPad対応）
 //==================================================
 
 let draggingGuide = false;
 
 const guideHandle = document.getElementById("guideHandle");
 
-guideHandle.addEventListener("pointerdown", (e) => {
+//------------------------------
+// マウス（PC）
+//------------------------------
+
+guideHandle.addEventListener("mousedown", (e) => {
 
     draggingGuide = true;
-
-    guideHandle.setPointerCapture(e.pointerId);
 
     e.preventDefault();
 
 });
 
-document.addEventListener("pointerup", () => {
+document.addEventListener("mouseup", () => {
 
     draggingGuide = false;
 
 });
 
-document.addEventListener("pointermove", (e) => {
+document.addEventListener("mousemove", (e) => {
 
     if (!draggingGuide) return;
 
+    moveGuide(e.clientY);
+
+});
+
+//------------------------------
+// タッチ（Android・iPhone・iPad）
+//------------------------------
+
+guideHandle.addEventListener("touchstart", (e) => {
+
+    draggingGuide = true;
+
+    e.preventDefault();
+
+}, { passive:false });
+
+document.addEventListener("touchend", () => {
+
+    draggingGuide = false;
+
+});
+
+document.addEventListener("touchmove", (e) => {
+
+    if (!draggingGuide) return;
+
+    e.preventDefault();
+
+    moveGuide(e.touches[0].clientY);
+
+}, { passive:false });
+
+//------------------------------
+// 共通処理
+//------------------------------
+
+function moveGuide(clientY){
+
     const rect = viewer.getBoundingClientRect();
 
-    let posY = e.clientY - rect.top;
+    let posY = clientY - rect.top;
 
-    if (posY < 0) posY = 0;
-    if (posY > rect.height) posY = rect.height;
+    if(posY < 0) posY = 0;
+
+    if(posY > rect.height) posY = rect.height;
 
     guideLine.style.top = posY + "px";
 
-});
+}
 
 //==================================================
 // 手動スクロール
